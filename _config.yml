@@ -1,2 +1,11 @@
 title: SamsLog
+author: Sambuddha Bhattacharya
+#baseurl: "/samslog"
+description: Learning log
+profile_url: "http://sambuddhab.github.io"
+
 theme: jekyll-theme-slate
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
