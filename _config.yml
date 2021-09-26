@@ -13,4 +13,4 @@ markdown: kramdown
 
 #permalink: /:year/:month/:day/:title
 
-theme: jekyll-theme-minimal
+theme: jekyll-theme-merlot
