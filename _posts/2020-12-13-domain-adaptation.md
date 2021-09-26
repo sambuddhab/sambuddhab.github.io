@@ -6,29 +6,29 @@ date: 2020-12-13
 
 This curates concepts and ideas about domain adaptation.
 
-### [Domain Adaptation versus Transfer Learning] (http://imatge-upc.github.io/telecombcn-2016-dlcv/slides/D2L5-transfer.pdf)
+### [Domain Adaptation versus Transfer Learning](http://imatge-upc.github.io/telecombcn-2016-dlcv/slides/D2L5-transfer.pdf)
 - In transfer learning, the source and target feature distributions are similar (same domain). The tasks are different (output).
 - In domain adaptation, the source and target feature distributions are different (different domain). The tasks are same (output).
 
 ### Different methods of domain adaptation
-Divergence based domain adaptation
+#### Divergence based domain adaptation
 - MMD - maximum mean discrepancy
-- (CORAL](https://arxiv.org/abs/1612.01939) / [Deep CORAL](https://arxiv.org/abs/1607.01719) - correlation discrepancy
+- [CORAL](https://arxiv.org/abs/1612.01939) / [Deep CORAL](https://arxiv.org/abs/1607.01719) - correlation discrepancy
 - CCD - Contrastive Domain Discrepancy — bring MMD for same labels close, and different labels farther
 - Wasserstein metric
 
-Adversarial based domain adaptation
+#### Adversarial based domain adaptation
 - CoGAN
 - Source / target converter
 - DANN — appears to work well
 
-Reconstruction based domain adaptation
+#### Reconstruction based domain adaptation
 - Deep reconstruction classification network
 - Cycle GAN
 - Conditional GAN
 
 
-### DANN
+### [DANN](https://arxiv.org/abs/1505.07818)
 - Motivation: If the features are modified such that a classifier can not distinguish if an item came from the source distribution or target distribution, then a classifier for positive/negative classes built on the source distribution adapts well on the target distribution
 - Underlying theory: 
     - Ben-David’s empirical H divergence. This is approximated by a proxy distance named PAD distance which measures the test error on classifying whether the sample belonged to the source or target distribution
@@ -42,7 +42,7 @@ Reconstruction based domain adaptation
     - On amazon sentiment analysis dataset, DANN is compared to NN and SVM. With and without the mSDA (marginalized Stacked Denoising Autoencoder). It shows less error across most of the domain adaptation tasks  [ 9/12 cases such as book->dvd, book->kitchen, book->electronics etc.]
 
 ### Divergence based domain adaptation
-#### [Deep Coral] (https://arxiv.org/abs/1607.01719) : Correlation alignment for domain adaptation 
+#### [Deep Coral](https://arxiv.org/abs/1607.01719) : Correlation alignment for domain adaptation 
 - The problem: Source distribution and target distributions are different. Training on source can result in poor performance on target.
 - Key idea: Modify the loss function. In addition to minimizing label-prediction (cross-entropy etc), add a term for the minimizing the distance between the feature covariances of source and target distributions (CORAL loss). This prevents ‘overfitting’ on the source distribution.
 
@@ -50,6 +50,6 @@ Reconstruction based domain adaptation
 
 - Still unclear:  Each weight update should happen with the combined loss. Are the source and target data sent separately, say in separate batches? Or are these sent together, and based on some ‘tag’ on the input, the custom loss function appropriately picks and constructs the two covariance matrices? Will need to go deeper into tensorFlow apis.
 
-### What happens in CORAL?
+#### Key items in [CORAL]((https://arxiv.org/abs/1612.01939)?
 - Whitening and Coloring
 - Min Frobenius norm of source and target covariance matrices
