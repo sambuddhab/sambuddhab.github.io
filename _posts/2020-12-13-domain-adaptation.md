@@ -45,11 +45,9 @@ This curates concepts and ideas about domain adaptation.
 #### [Deep Coral](https://arxiv.org/abs/1607.01719) : Correlation alignment for domain adaptation 
 - The problem: Source distribution and target distributions are different. Training on source can result in poor performance on target.
 - Key idea: Modify the loss function. In addition to minimizing label-prediction (cross-entropy etc), add a term for the minimizing the distance between the feature covariances of source and target distributions (CORAL loss). This prevents ‘overfitting’ on the source distribution.
-
 - Method:  Distance between covariance matrices is computed using Frobenius norm. The CORAL loss is applied to the last FC layer in the paper. The source data is used for training to minimize label-prediction loss. Both source and target data used to train for minimizing the CORAL loss.
-
 - Still unclear:  Each weight update should happen with the combined loss. Are the source and target data sent separately, say in separate batches? Or are these sent together, and based on some ‘tag’ on the input, the custom loss function appropriately picks and constructs the two covariance matrices? Will need to go deeper into tensorFlow apis.
 
-#### Key items in [CORAL]((https://arxiv.org/abs/1612.01939)?
+#### Key items in [CORAL](https://arxiv.org/abs/1612.01939)
 - Whitening and Coloring
 - Min Frobenius norm of source and target covariance matrices
